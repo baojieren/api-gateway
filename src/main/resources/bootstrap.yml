@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api-gateway
+
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: dev
+
+  main:
+    # Spring Boot 2.1 需要设定
+    allow-bean-definition-overriding: true
+
+  cloud:
+    nacos:
+      config:
+        server-addr: ${settings.nacos.addr}
+        namespace: ${settings.nacos.namespace.${spring.profiles.active}}
+        file-extension: yml
+
+      discovery:
+        server-addr: ${settings.nacos.addr}
+        namespace: ${settings.nacos.namespace.${spring.profiles.active}}
+    # cluster-name: nacos1:port, nacos2:port, nacos3:port
+    sentinel:
+      transport:
+        dashboard: ${settings.sentinel.addr}
+
+#--------------nacos外部全局统一配置--------------
+settings:
+  nacos:
+    addr: 139.9.245.21:8848
+    namespace:
+      dev: 2d4ec323-f64c-48c6-aa98-b96779f07500
+      test: bde125ce-1845-4069-b0ef-c733a0dbdfdc
+      prod: bde125ce-1845-4069-b0ef-c733a0dbdfdc
+  sentinel:
+    addr: 139.9.245.21:8849

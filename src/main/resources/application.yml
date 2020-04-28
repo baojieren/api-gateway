@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    gateway:
+      # 配置跨域
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+#            allowCredentials: true

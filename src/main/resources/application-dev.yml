@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://139.9.248.142:3306/gmsj?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: app
+    password: Gmsj2017@
+
+  redis:
+    host: 139.9.245.21
+    port: 6380
+    timeout: 15000ms
+    database: 0
+    password: Redis615243
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 5
+        min-idle: 1
+        max-wait: 15000ms
